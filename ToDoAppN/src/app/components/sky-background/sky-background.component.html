@@ -1,0 +1,112 @@
+<div id="background-wrap">
+    <div class="x1">
+        <div class="cloud1"></div>
+    </div>
+    <div class="x2">
+        <div class="cloud"></div>
+    </div>
+    <div class="x3">
+        <div class="cloud"></div>
+    </div>
+    <div class="x4">
+        <div class="cloud"></div>
+    </div>
+    <div class="x5">
+        <div class="cloud"></div>
+    </div>
+    <div class="sun"></div>
+    <div class='grass'>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+        <div class='blade'></div>
+    </div>
+  </div>
+  
+  
+  <section>
+   
+  <h1>Todo List</h1>
+  
+  <button (click)="openModal()" class="create-task">Create Task+</button> 
+    <div class="tbl-header">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <thead>
+          <tr>
+            <th>Task Id</th>
+            <th>Assigned By</th>
+            <th>Assigned To</th>
+            <th>Task Name</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tbl-content">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tbody>
+          <tr *ngFor="let task of tasks">
+            <td>{{ task.taskid }}</td>
+            <td>{{ task.usercreated.email}}</td>
+            <td>{{ task.assigneduser.email }}</td>
+            <td>{{ task.taskname }}</td>
+            <td> 
+              <select class="change-status" [(ngModel)]="task.status" (change)="updateStatus(task.taskid, task.status)">
+                <option value="Pending" [disabled]="task.status === 'Incomplete' || task.status === 'Completed'">Pending</option>
+                <option value="In Progress" [disabled]="task.status === 'Completed'">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section> 
+  <button (click)="logout()" class="logout">LogOut</button>
+

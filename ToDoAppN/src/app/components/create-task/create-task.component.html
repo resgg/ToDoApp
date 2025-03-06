@@ -1,0 +1,74 @@
+<div
+  role="dialog"
+  aria-labelledby="modal-basic-title"
+  aria-modal="true"
+  class="modal-header"
+>
+  <h4 class="modal-title" id="modal-basic-title">Task Creation</h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #taskForm="ngForm" (ngSubmit)="passBack(taskForm)">
+    <div class="form-group">
+      <label for="assignto">Assign To:</label>
+      <input
+        [(ngModel)]="task.assignto"
+        name="assignto"
+        type="text"
+        class="form-control"
+        id="assignto"
+        placeholder="Enter assignee"
+        required
+      />
+      <div *ngIf="(taskForm.submitted || taskForm.controls['assignto']?.touched) && taskForm.controls['assignto']?.invalid" class="text-danger">
+        Assign To is required.
+      </div>
+  
+    </div>
+    <div class="form-group">
+      <label for="taskname">Task Name:</label>
+      <input
+        [(ngModel)]="task.taskname"
+        name="taskname"
+        type="text"
+        class="form-control"
+        id="taskname"
+        placeholder="Enter task name"
+        required
+      />
+      <div *ngIf="(taskForm.submitted || taskForm.controls['taskname']?.touched) && taskForm.controls['taskname']?.invalid" class="text-danger">
+        Task Name is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="status">Status:</label>
+      <input
+        [(ngModel)]="task.status"
+        name="status"
+        type="text"
+        class="form-control"
+        id="status"
+        placeholder="Enter status"
+        required
+      />
+      <div *ngIf="(taskForm.submitted || taskForm.controls['status']?.touched) && taskForm.controls['status']?.invalid" class="text-danger">
+        Status is required.
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary w-100"
+      [disabled]="taskForm.invalid"
+    >
+      Pass Back
+    </button>
+  </form>
+</div>
